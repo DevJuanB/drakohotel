@@ -91,4 +91,4 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más 
 
 ## Contacto
 
-Para más información, puedes contactar al desarrollador a través de [tu-email@example.com].
+Para más información,  [discord](https://discord.gg/Ahk7Fm9Hbk)].
