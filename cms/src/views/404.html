@@ -1,0 +1,351 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+    
+      body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Space Mono', monospace;
+        background-color: #000;
+        color: #0f0;
+        overflow: hidden;
+      }
+    
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        perspective: 1000px;
+        position: relative;
+        z-index: 1;
+      }
+    
+      .glitch {
+        font-size: 8vw;
+        font-weight: bold;
+        text-transform: uppercase;
+        position: relative;
+        animation: glitch 2s infinite;
+      }
+    
+      @keyframes glitch {
+        0% {
+          transform: skew(0deg);
+        }
+        20% {
+          transform: skew(10deg);
+        }
+        40% {
+          transform: skew(-10deg);
+        }
+        60% {
+          transform: skew(5deg);
+        }
+        80% {
+          transform: skew(-5deg);
+        }
+        100% {
+          transform: skew(0deg);
+        }
+      }
+    
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    
+      .glitch::before {
+        left: 2px;
+        text-shadow: -2px 0 #ff00ff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim 5s infinite linear alternate-reverse;
+      }
+    
+      .glitch::after {
+        left: -2px;
+        text-shadow: -2px 0 #00ffff;
+        clip: rect(44px, 450px, 56px, 0);
+        animation: glitch-anim2 1s infinite linear alternate-reverse;
+      }
+    
+      @keyframes glitch-anim {
+        0% {
+          clip: rect(31px, 9999px, 94px, 0);
+        }
+        25% {
+          clip: rect(78px, 9999px, 14px, 0);
+        }
+        50% {
+          clip: rect(11px, 9999px, 35px, 0);
+        }
+        75% {
+          clip: rect(40px, 9999px, 5px, 0);
+        }
+        100% {
+          clip: rect(59px, 9999px, 99px, 0);
+        }
+      }
+    
+      @keyframes glitch-anim2 {
+        0% {
+          clip: rect(36px, 9999px, 71px, 0);
+        }
+        25% {
+          clip: rect(82px, 9999px, 40px, 0);
+        }
+        50% {
+          clip: rect(9px, 9999px, 90px, 0);
+        }
+        75% {
+          clip: rect(23px, 9999px, 12px, 0);
+        }
+        100% {
+          clip: rect(67px, 9999px, 75px, 0);
+        }
+      }
+    
+      .message {
+        font-size: 1.5vw;
+        margin-top: 2rem;
+        text-align: center;
+        opacity: 0;
+        animation: fade-in 2s forwards 1s;
+      }
+    
+      @keyframes fade-in {
+        to {
+          opacity: 1;
+        }
+      }
+    
+      #particles-js {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+    
+      .back-link {
+        margin-top: 2rem;
+        font-size: 1.2vw;
+        color: #00ff00;
+        text-decoration: none;
+        border: 2px solid #00ff00;
+        padding: 0.5rem 1rem;
+        transition: all 0.3s ease;
+      }
+    
+      .back-link:hover {
+        background-color: #00ff00;
+        color: #000;
+      }
+    
+      .background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #001a00, #003300, #004d00, #006600);
+        background-size: 400% 400%;
+        animation: gradientBG 15s ease infinite;
+        opacity: 0.3;
+        z-index: -1;
+      }
+    
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    
+      .comic-image {
+        position: fixed;
+        width: 100px;
+        height: 100px;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+    
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+    </style>
+    </head>
+    <body>
+    <div class="background"></div>
+    <div id="particles-js"></div>
+    <div class="container">
+      <div class="glitch" data-text="404">404</div>
+      <div class="message">
+        <p>THE PAGE YOU SEEK HAS TRANSCENDED REALITY</p>
+        <p>RECALIBRATING DRAKO COORDINATES...</p>
+      </div>
+      <a href="/src/views/profile/wall.html" class="back-link">RETURN TO REALITY</a>
+    </div>
+    <img src="/src/media/Futurama.gif" alt="Comic floating head gif" class="comic-image" width="100" height="100">
+    
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      // Anti-inspect code
+      (function() {
+        function blockInspect() {
+          if (window.devtools.isOpen) {
+            window.location.href = "/blocked";
+          }
+          window.devtools.isOpen = false;
+          window.devtools.orientation = undefined;
+        }
+    
+        const devtools = {
+          isOpen: false,
+          orientation: undefined
+        };
+    
+        const threshold = 160;
+    
+        const emitEvent = (isOpen, orientation) => {
+          window.dispatchEvent(new CustomEvent('devtoolschange', {
+            detail: {
+              isOpen,
+              orientation
+            }
+          }));
+        };
+    
+        setInterval(() => {
+          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+          const orientation = widthThreshold ? 'vertical' : 'horizontal';
+    
+          if (
+            !(heightThreshold && widthThreshold) &&
+            ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+          ) {
+            if (!devtools.isOpen || devtools.orientation !== orientation) {
+              emitEvent(true, orientation);
+            }
+            devtools.isOpen = true;
+            devtools.orientation = orientation;
+          } else {
+            if (devtools.isOpen) {
+              emitEvent(false, undefined);
+            }
+            devtools.isOpen = false;
+            devtools.orientation = undefined;
+          }
+        }, 500);
+    
+        window.addEventListener('devtoolschange', blockInspect);
+    
+        // Disable right-click
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+    
+        // Disable F12 key
+        document.onkeydown = function(e) {
+          if(e.keyCode == 123) {
+            return false;
+          }
+          // Disable Ctrl+Shift+I
+          if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+            return false;
+          }
+          // Disable Ctrl+Shift+J
+          if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+            return false;
+          }
+          // Disable Ctrl+U
+          if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+            return false;
+          }
+        }
+    
+      })();
+    
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: '#00ff00' },
+          shape: { type: 'triangle' },
+          opacity: { value: 0.5, random: false, anim: { enable: false } },
+          size: { value: 3, random: true, anim: { enable: false } },
+          line_linked: { enable: true, distance: 150, color: '#00ff00', opacity: 0.4, width: 1 },
+          move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+          modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+        },
+        retina_detect: true
+      });
+    
+      const glitchElement = document.querySelector('.glitch');
+      setInterval(() => {
+        const randomColor = Math.floor(Math.random()*16777215).toString(16);
+        glitchElement.style.color = "#" + randomColor;
+      }, 1000);
+    
+      const message = document.querySelector('.message');
+      const texts = [
+        "CGN4 IA ESTA ACTIVA",
+        "RECALIBRATING DRAKO COORDINATES...",
+        "INITIATING MULTIVERSAL SEARCH PROTOCOL",
+        "SCANNING PARALLEL DIMENSIONS...",
+        "ERROR: REALITY BREACH DETECTED"
+      ];
+      let currentIndex = 0;
+    
+      setInterval(() => {
+        message.innerHTML = `<p>${texts[currentIndex]}</p>`;
+        currentIndex = (currentIndex + 1) % texts.length;
+      }, 3000);
+    
+      const comicImage = document.querySelector('.comic-image');
+    
+      function showComicImage() {
+        if (Math.random() < 0.2) {
+          const x = Math.random() * (window.innerWidth - 100);
+          const y = Math.random() * (window.innerHeight - 100);
+          comicImage.style.left = `${x}px`;
+          comicImage.style.top = `${y}px`;
+          comicImage.style.opacity = '1';
+          comicImage.style.animation = 'float 3s ease-in-out infinite';
+    
+          setTimeout(() => {
+            comicImage.style.opacity = '0';
+            comicImage.style.animation = 'none';
+          }, 3000);
+        }
+      }
+    
+      setInterval(showComicImage, 5000);
+    </script>
+    </body></html>

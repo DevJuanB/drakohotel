@@ -1,0 +1,475 @@
+<!DOCTYPE html><html>
+    <head>
+    <title>In Maintenance</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --primary-color: #6a4cff;
+    --secondary-color: #ff4c8c;
+    --tertiary-color: #4cffd7;
+    --background-color: #0a0e17;
+    --card-bg-color: #1a1e2e;
+    --text-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.maintenance-card {
+    background: linear-gradient(135deg, #1a1e2e, #0a0e17);
+    border: 4px solid var(--primary-color);
+    border-radius: 20px;
+    box-shadow: 0 0 40px var(--primary-color), inset 0 0 25px var(--primary-color);
+    padding: 2rem;
+    margin: 20px;
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transform: perspective(1000px) rotateY(5deg);
+    transition: transform 0.3s ease;
+}
+
+.maintenance-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, transparent 49%, var(--primary-color) 49%, var(--primary-color) 51%, transparent 51%),
+        linear-gradient(-45deg, transparent 49%, var(--primary-color) 49%, var(--primary-color) 51%, transparent 51%);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    z-index: -1;
+}
+
+.maintenance-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(to right, var(--primary-color) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--primary-color) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.05;
+    z-index: -1;
+}
+
+h1 {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8em;
+    text-shadow: 3px 3px var(--tertiary-color), 6px 6px var(--secondary-color);
+}
+
+h2 {
+    color: var(--tertiary-color);
+    font-size: 1.4em;
+    margin-bottom: 1.5rem;
+}
+
+p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 0.9em;
+    margin-bottom: 2.5rem;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 2rem;
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 15px var(--primary-color));
+    animation: pulse 3s infinite, rotate 20s linear infinite;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 25px;
+    background-color: #2a2e3e;
+    border: 3px solid var(--primary-color);
+    border-radius: 20px;
+    box-shadow: 0 0 15px var(--primary-color);
+    overflow: hidden;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    border-radius: 15px;
+    background: linear-gradient(90deg, var(--secondary-color), var(--tertiary-color), var(--primary-color));
+    background-size: 300% 100%;
+    animation: progress 3s ease-in-out infinite alternate, 
+               rainbow 8s linear infinite;
+}
+
+@keyframes progress {
+    from { width: 0%; }
+    to { width: 75%; }
+}
+
+@keyframes rainbow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.staff-login {
+    margin-top: 2rem;
+    background-color: var(--tertiary-color);
+    color: var(--background-color);
+    border: none;
+    padding: 12px 24px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(76, 255, 215, 0.3);
+}
+
+.staff-login:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(255, 76, 140, 0.5);
+    transform: translateY(-3px);
+}
+
+.pixel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.05;
+}
+
+.miner-gif {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 140px;
+    height: auto;
+    filter: drop-shadow(0 0 10px var(--tertiary-color));
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.corner-image {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 80px;
+    max-width: 20%;
+    height: auto;
+    animation: pulse 3s infinite, float 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+}
+
+.star {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #fff;
+    animation: twinkle var(--duration) linear infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.shooting-star {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255,255,255,0.1), 0 0 0 8px rgba(255,255,255,0.1), 0 0 20px rgba(255,255,255,1);
+    animation: shoot 3s linear infinite;
+}
+
+@keyframes shoot {
+    0% { transform: translateX(0) translateY(0) rotate(-45deg); opacity: 1; }
+    70% { opacity: 1; }
+    100% { transform: translateX(-500px) translateY(500px) rotate(-45deg); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .maintenance-card {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+
+    .logo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .staff-login {
+        font-size: 0.8em;
+        padding: 10px 20px;
+    }
+
+    .miner-gif {
+        width: 100px;
+    }
+}
+
+@media (max-width: 480px) {
+    .maintenance-card {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 1em;
+    }
+
+    p {
+        font-size: 0.7em;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .staff-login {
+        font-size: 0.7em;
+        padding: 8px 16px;
+    }
+
+    .miner-gif {
+        width: 80px;
+    }
+}
+</style>
+</head>
+<body>
+    <div class="stars"></div>
+    <img class="corner-image" src="/src/media/build.png" alt="build" width="80" height="auto">
+    <div class="maintenance-card">
+        <img class="logo" src="/src/media/logo.png" alt="DrakoHotel logo" width="150" height="150" style="animation: blink 2s infinite, rotate 20s linear infinite;">
+        <h1>DrakoHotel</h1>
+        <h2>Under Maintenance</h2>
+        <p>Our pixelated paradise is getting a stellar upgrade! We're adding more cosmic bits and galactic bytes to make your stay even more awesome. Please come back soon for an out-of-this-world experience!</p>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+        <button class="staff-login">Staff Login</button>
+        <svg class="pixel-bg" width="100%" height="100%">
+            <pattern id="pixel-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <rect x="0" y="0" width="10" height="10" fill="#6a4cff"></rect>
+                <rect x="10" y="0" width="10" height="10" fill="#ff4c8c"></rect>
+                <rect x="0" y="10" width="10" height="10" fill="#4cffd7"></rect>
+                <rect x="10" y="10" width="10" height="10" fill="#b3e5fc"></rect>
+            </pattern>
+            <rect x="0" y="0" width="100%" height="100%" fill="url(#pixel-pattern)"></rect>
+        </svg>
+        <img class="miner-gif" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgiC70Mnk6jw8VuvObQ5mPqYJhFDqYW4bAzaQnTn1QPdsQPgmG9mMgBdwLlH0QkDPNNR7-FNpEiZisS4jS0wcFTqe0lJ510AT6DlnpPWqZhgs0C33z5HEd8sHH-W0_SDeXD2BlgdpQ2EYk/s1600/sticker_mineur.gif" alt="Pixel miner character digging" width="140" height="140">
+        <div class="shooting-star"></div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const progressBar = document.querySelector('.progress');
+    const maintenanceCard = document.querySelector('.maintenance-card');
+    const minerGif = document.querySelector('.miner-gif');
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 2;
+        if (progress > 100) {
+            progress = 100;
+            clearInterval(interval);
+        }
+        progressBar.style.width = `${progress}%`;
+    }, 200);
+
+    const staffLogin = document.querySelector('.staff-login');
+    staffLogin.addEventListener('click', () => {
+        const password = prompt("Enter staff password:");
+        if (password === "pixel1234") {
+            alert("Welcome back, valued staff member!");
+            window.location.href = "/src/views/";
+        } else {
+            alert("Invalid password. Access denied.");
+            glitchEffect();
+        }
+    });
+
+    function glitchEffect() {
+        const glitchDuration = 1000;
+        const glitchInterval = 50;
+        let glitchTimeout;
+
+        function applyGlitch() {
+            maintenanceCard.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px) scale(${1 + Math.random() * 0.1})`;
+            maintenanceCard.style.filter = `hue-rotate(${Math.random() * 360}deg) brightness(${1 + Math.random() * 0.5})`;
+        }
+
+        function removeGlitch() {
+            maintenanceCard.style.transform = '';
+            maintenanceCard.style.filter = '';
+        }
+
+        const startTime = Date.now();
+        function glitchLoop() {
+            const elapsedTime = Date.now() - startTime;
+            if (elapsedTime < glitchDuration) {
+                applyGlitch();
+                glitchTimeout = setTimeout(glitchLoop, glitchInterval);
+            } else {
+                removeGlitch();
+            }
+        }
+
+        glitchLoop();
+    }
+
+    const audio = new Audio('https://pixel.drakohotel.com/assets/sounds/space_beep.mp3');
+    document.body.addEventListener('click', () => {
+        audio.play();
+    });
+
+    let konami = '';
+    const konamiCode = 'ArrowUpArrowUpArrowDownArrowDownArrowLeftArrowRightArrowLeftArrowRightba';
+    document.addEventListener('keydown', (e) => {
+        konami += e.key;
+        if (konamiCode.indexOf(konami) !== 0) {
+            konami = '';
+        } else if (konami === konamiCode) {
+            document.body.style.animation = 'spin 2s linear infinite';
+            alert('You found the secret! The hotel is spinning in space now!');
+            konami = '';
+        }
+    });
+
+    minerGif.addEventListener('click', () => {
+        minerGif.style.transform = 'scale(1.5) rotate(720deg)';
+        minerGif.style.filter = 'hue-rotate(180deg) drop-shadow(0 0 15px var(--secondary-color))';
+        setTimeout(() => {
+            minerGif.style.transform = 'scale(1) rotate(0deg)';
+            minerGif.style.filter = 'drop-shadow(0 0 10px var(--tertiary-color))';
+        }, 1000);
+        audio.play();
+    });
+
+    const starsContainer = document.querySelector('.stars');
+    for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        const size = Math.random() * 3;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.setProperty('--duration', `${Math.random() * 5 + 3}s`);
+        starsContainer.appendChild(star);
+    }
+
+    const shootingStar = document.createElement('div');
+    shootingStar.classList.add('shooting-star');
+    document.body.appendChild(shootingStar);
+
+    setInterval(() => {
+        shootingStar.style.left = `${Math.random() * 100}%`;
+        shootingStar.style.top = `${Math.random() * 100}%`;
+        shootingStar.style.animation = 'none';
+        shootingStar.offsetHeight;
+        shootingStar.style.animation = 'shoot 3s linear';
+    }, 4000);
+
+    maintenanceCard.addEventListener('mousemove', (e) => {
+        const rect = maintenanceCard.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const angleX = (y - centerY) / 25;
+        const angleY = (centerX - x) / 25;
+
+        maintenanceCard.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale3d(1.05, 1.05, 1.05)`;
+    });
+
+    maintenanceCard.addEventListener('mouseleave', () => {
+        maintenanceCard.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+    });
+
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+    `;
+    document.head.appendChild(style);
+});
+</script>
+</body></html>

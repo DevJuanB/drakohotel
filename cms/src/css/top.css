@@ -1,0 +1,236 @@
+/* 
+
+} Guest to DrakoHotel 2024
+
+
+*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom right, #0f0f0f, #1a1a1a);
+    color: #ffffff;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header Styles */
+.header-bg {
+    background: linear-gradient(135deg, #151515 0%, #2b2b2b 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px 0;
+}
+
+.header-bg .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #f3ec78, #af4261);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+nav a {
+    text-decoration: none;
+    margin: 0 15px;
+    color: #bbb;
+    transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+    color: #fff;
+    border-bottom: 2px solid #ff6347;
+}
+
+/* Button Styles */
+button {
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.btn-primary {
+    padding: 10px 25px;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    color: white;
+    border-radius: 30px;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    transform: scale(1.05);
+}
+
+.btn-secondary {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #21d4fd, #b721ff);
+    border-radius: 20px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #b721ff, #21d4fd);
+    transform: scale(1.05);
+}
+
+/* Banner Section */
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    margin: 30px 0;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.banner:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.banner img {
+    height: 150px;
+    border-radius: 50%;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.banner h2 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.banner p {
+    color: #ddd;
+}
+
+/* Featured Groups */
+.featured-groups {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.featured-groups:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.featured-groups h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.featured-groups ul {
+    list-style: none;
+    padding: 0;
+}
+
+.featured-groups li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ddd;
+}
+
+.featured-groups li:hover {
+    color: #fff;
+    border-bottom: 1px solid #ff6347;
+}
+
+/* Top Users Section */
+.top-users-section {
+    margin: 40px 0;
+}
+
+.top-users-section h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.top-users-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.top-category {
+    flex: 1;
+    min-width: 250px;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.top-category h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.user-cards {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-card {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin: 5px 0;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.user-card img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.user-info {
+    color: #ddd;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #2b2b2b;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+    color: #bbb;
+    font-size: 14px;
+}
+
+footer p:hover {
+    color: #fff;
+}

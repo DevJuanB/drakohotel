@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - DrakoHotel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/views/store/tienda.css">
+</head>
+<body>
+    <!-- Encabezado de la tienda -->
+    <header class="header">
+        <h1>Tienda - DrakoHotel</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/src/views/store/tienda.html">Tienda</a>
+            <a href="/src/views/top.html">Eventos</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Barra de búsqueda -->
+        <div class="buscador">
+            <input type="text" id="buscar" placeholder="Buscar productos..." oninput="buscarProducto()">
+        </div>
+
+        <!-- Título principal -->
+        <div class="tienda-title">
+            <h2>Explora los artículos más populares</h2>
+        </div>
+
+        <!-- Productos en la tienda -->
+        <div class="productos" id="productos">
+            <div class="producto">
+                <img src="/src/media/spromo_Bonus_Bags.png" alt="Pase VIP 1 Mes">
+                <h3>Pase VIP 1 Mes</h3>
+                <p>Acceso exclusivo por 1 mes a salas y beneficios VIP. Precio: $5</p>
+                <button onclick="agregarAlCarrito('Pase VIP 1 Mes', 5)">Agregar al carrito</button>
+            </div>
+            <div class="producto">
+                <img src="/src/media/spromo_Bonus_Bags.png" alt="Estatua de Dragón VIP">
+                <h3>Estatua de Dragón VIP</h3>
+                <p>Una exclusiva estatua para decorar tus salas VIP.</p>
+                <button onclick="agregarAlCarrito('Estatua de Dragón VIP', 50)">Agregar al carrito</button>
+            </div>
+
+            <!-- Para + Productos solo copie el div -->
+        </div>
+
+        <!-- Carrito de compras -->
+        <div class="carrito">
+            <h2>Carrito de Compras</h2>
+            <div id="carrito-items"></div>
+            <div class="carrito-total">
+                <p id="total-puntos">Total: 0 puntos</p>
+                <button class="btn-comprar" onclick="finalizarCompra()">Finalizar compra</button>
+            </div>
+        </div>
+    </main>
+<script src="/src/views/store/tienda.js"></script>
+    <!-- Pie de página -->
+    <footer class="footer">
+        <p>Copyright © DrakoHotel 2024 - Todos los derechos reservados</p>
+    </footer>
+</body>
+</html>

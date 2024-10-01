@@ -1,0 +1,645 @@
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DraKoHotel - Staffs</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+        :root {
+            --primary-color: #ff9100;
+            --secondary-color: #ffd000;
+            --accent-color: #ff5400;
+            --bg-dark: #1a1a1a;
+            --bg-light: #f0f0f0;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+        }
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body, html {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+    
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff9100, #ffd000, #ff5400);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+    
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    
+        .header {
+            background-color: rgba(26, 26, 26, 0.9);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+    
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+    
+        .nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+    
+        .nav a:hover {
+            color: var(--primary-color);
+        }
+    
+        .main-content {
+            padding: 50px 0;
+        }
+    
+        .staff-category {
+            margin-bottom: 50px;
+        }
+    
+        .category-title {
+            font-size: 2.2em;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+    
+        .staff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+    
+        .staff-card {
+            background-color: rgba(42, 42, 42, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+    
+        .staff-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 17px;
+        }
+    
+        .staff-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+    
+        .staff-card:hover::before {
+            opacity: 1;
+        }
+    
+        .staff-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .staff-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: inherit;
+            filter: blur(10px);
+        }
+    
+        .staff-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid var(--text-light);
+            margin: 0 auto 15px;
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+        }
+    
+        .staff-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+    
+        .staff-card:hover .staff-avatar img {
+            transform: scale(1.1);
+        }
+    
+        .staff-name {
+            font-size: 1.4em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+    
+        .staff-role {
+            font-size: 1em;
+            color: var(--bg-dark);
+            font-weight: 600;
+            opacity: 0.8;
+        }
+    
+        .staff-info {
+            padding: 25px;
+        }
+    
+        .staff-bio {
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+    
+        .staff-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+    
+        .status-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+    
+        .online {
+            background-color: #2ecc71;
+            box-shadow: 0 0 10px #2ecc71;
+        }
+    
+        .offline {
+            background-color: #e74c3c;
+            box-shadow: 0 0 10px #e74c3c;
+        }
+    
+        .footer {
+            background-color: rgba(42, 42, 42, 0.9);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+    
+        .social-links {
+            margin-top: 20px;
+        }
+    
+        .social-links a {
+            color: var(--text-light);
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+    
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+    
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+    
+            .nav {
+                margin-top: 20px;
+            }
+    
+            .staff-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <div class="animated-background"></div>
+    
+        <header class="header">
+            <div class="container nav-container">
+                <a href="/" class="logo">DrakoHotel</a>
+                <nav class="nav">
+                    <a href="/src/views/index.html">Inicio</a>
+                    <a href="/src/views/top.html">Comunidad</a>
+                    <a href="/src/views/store/tienda.html">Tienda</a>
+                    <a href="/support">Soporte</a>
+                </nav>
+            </div>
+        </header>
+    
+        <main class="main-content">
+            <div class="container">
+                <section class="staff-category">
+                    <h2 class="category-title">Fundadores</h2>
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Adonis">
+                                </div>
+                                <h2 class="staff-name">Adonis</h2>
+                                <p class="staff-role">Fundador Principal</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Visionario y líder de Drako Hotel, Adonis es el cerebro detrás de nuestra misión de crear el mejor mundo virtual.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectado
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Stella">
+                                </div>
+                                <h2 class="staff-name">Stella</h2>
+                                <p class="staff-role">Co-Fundadora</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Experta en diseño y experiencia de usuario, Stella asegura que Drako Hotelotelotelotelotel sea intuitivo y atractivo para todos.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectada
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <section class="staff-category">
+                    <h2 class="category-title">Administración</h2>
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Luna">
+                                </div>
+                                <h2 class="staff-name">Luna</h2>
+                                <p class="staff-role">Administradora General</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Luna coordina todas las operaciones diarias de Drako Hotel, asegurando que todo funcione sin problemas.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectada
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Zephyr">
+                                </div>
+                                <h2 class="staff-name">Zephyr</h2>
+                                <p class="staff-role">Administrador Técnico</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Zephyr es el genio detrás de nuestra infraestructura técnica, manteniendo Drako Hotel rápido y seguro.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon offline"></span>
+                                    Desconectado
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <section class="staff-category">
+                    <h2 class="category-title">Moderación</h2>
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Orión">
+                                </div>
+                                <h2 class="staff-name">Orión</h2>
+                                <p class="staff-role">Moderador Principal</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Orión lidera el equipo de moderación, garantizando un ambiente seguro y amigable para todos los usuarios.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectado
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Nova">
+                                </div>
+                                <h2 class="staff-name">Nova</h2>
+                                <p class="staff-role">Moderadora</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Nova es experta en resolver conflictos y mantener la armonía en la comunidad de Drako Hotel.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectada
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Astro">
+                                </div>
+                                <h2 class="staff-name">Astro</h2>
+                                <p class="staff-role">Moderador</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Astro se especializa en detectar y prevenir comportamientos inapropiados en Drako Hotel.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon offline"></span>
+                                    Desconectado
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Lyra">
+                                </div>
+                                <h2 class="staff-name">Lyra</h2>
+                                <p class="staff-role">Moderadora</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Lyra es conocida por su enfoque amigable y educativo en la moderación de la comunidad.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectada
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+    
+                <section class="staff-category">
+                    <h2 class="category-title">Equipo de Eventos</h2>
+                    <div class="staff-grid">
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Aurora">
+                                </div>
+                                <h2 class="staff-name">Aurora</h2>
+                                <p class="staff-role">Coordinadora de Eventos</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Aurora es la mente creativa detrás de los emocionantes eventos y competencias de Drako Hotel.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectada
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Phoenix">
+                                </div>
+                                <h2 class="staff-name">Phoenix</h2>
+                                <p class="staff-role">Organizador de Eventos</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Phoenix se especializa en crear juegos y desafíos únicos que mantienen a la comunidad emocionada.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon offline"></span>
+                                    Desconectado
+                                </div>
+                            </div>
+                        </div>
+                        <div class="staff-card">
+                            <div class="staff-header">
+                                <div class="staff-avatar">
+                                    <img src="https://via.placeholder.com/120" alt="Avatar de Celeste">
+                                </div>
+                                <h2 class="staff-name">Celeste</h2>
+                                <p class="staff-role">Diseñadora de Eventos</p>
+                            </div>
+                            <div class="staff-info">
+                                <p class="staff-bio">Celeste da vida a los eventos con sus increíbles diseños y decoraciones temáticas.</p>
+                                <div class="staff-status">
+                                    <span class="status-icon online"></span>
+                                    Conectada
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2023 Drako Hotel Mundo Virtual. Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/DrakoHotel"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.twitter.com/DrakoHotel"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/DrakoHotel"><i class="fab fa-instagram"></i></a>
+                    <a href="https://discord.gg/GraMB9uJRB"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+        </footer>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+        <script>
+            // Anti-inspect code
+            (function() {
+              function blockInspect() {
+                if (window.devtools.isOpen) {
+                  window.location.href = "/blocked";
+                }
+                window.devtools.isOpen = false;
+                window.devtools.orientation = undefined;
+              }
+          
+              const devtools = {
+                isOpen: false,
+                orientation: undefined
+              };
+          
+              const threshold = 160;
+          
+              const emitEvent = (isOpen, orientation) => {
+                window.dispatchEvent(new CustomEvent('devtoolschange', {
+                  detail: {
+                    isOpen,
+                    orientation
+                  }
+                }));
+              };
+          
+              setInterval(() => {
+                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+                const orientation = widthThreshold ? 'vertical' : 'horizontal';
+          
+                if (
+                  !(heightThreshold && widthThreshold) &&
+                  ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+                ) {
+                  if (!devtools.isOpen || devtools.orientation !== orientation) {
+                    emitEvent(true, orientation);
+                  }
+                  devtools.isOpen = true;
+                  devtools.orientation = orientation;
+                } else {
+                  if (devtools.isOpen) {
+                    emitEvent(false, undefined);
+                  }
+                  devtools.isOpen = false;
+                  devtools.orientation = undefined;
+                }
+              }, 500);
+          
+              window.addEventListener('devtoolschange', blockInspect);
+          
+              // Disable right-click
+              document.addEventListener('contextmenu', (e) => e.preventDefault());
+          
+              // Disable F12 key
+              document.onkeydown = function(e) {
+                if(e.keyCode == 123) {
+                  return false;
+                }
+                // Disable Ctrl+Shift+I
+                if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+                  return false;
+                }
+                // Disable Ctrl+Shift+J
+                if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+                  return false;
+                }
+                // Disable Ctrl+U
+                if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                  return false;
+                }
+              }
+          
+            })();
+            gsap.registerPlugin(ScrollTrigger);
+    
+            gsap.from(".staff-card", {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                stagger: 0.2,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".staff-grid",
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+    
+            gsap.from(".logo", {
+                duration: 1,
+                opacity: 0,
+                x: -50,
+                ease: "power3.out"
+            });
+    
+            gsap.from(".nav a", {
+                duration: 1,
+                opacity: 0,
+                y: -20,
+                stagger: 0.1,
+                ease: "power3.out"
+            });
+    
+            gsap.from(".category-title", {
+                duration: 1,
+                opacity: 0,
+                y: 30,
+                stagger: 0.3,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".category-title",
+                    start: "top 80%",
+                    toggleActions: "play none none none"
+                }
+            });
+    
+            // Efecto hover para las tarjetas
+            const cards = document.querySelectorAll('.staff-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    gsap.to(card, {duration: 0.3, scale: 1.05, boxShadow: "0 15px 30px rgba(0,0,0,0.3)"});
+                });
+                card.addEventListener('mouseleave', () => {
+                    gsap.to(card, {duration: 0.3, scale: 1, boxShadow: "0 10px 20px rgba(0,0,0,0.2)"});
+                });
+            });
+        </script>
+    </body>
+    </html>

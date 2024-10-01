@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrakoHotel</title>
+    <link rel="stylesheet" href="/src/css/drako.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+   <!-- Header -->
+<header>
+    <div class="container header-container">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#"><img src="/src/media/logo.png" alt="DrakoHotel Logo"></a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">¿Qué es DrakoHotel?</a></li>
+                <li><a href="#">Retos y Desafíos</a></li>
+                <li><a href="#">Recompensas y Economía</a></li>
+            </ul>
+            <div class="auth-buttons">
+                <button class="btn-login">CGN V1.1</button>
+            <button class="menu-toggle">
+                <span class="menu-icon"></span> <!-- Icono del menú para móviles -->
+            </button>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Banner Section -->
+<section class="banner">
+    <div class="container banner-content">
+        <div class="banner-text">
+            <h1>¡Bienvenido a <span class="highlight">DrakoHotel</span>! El nuevo mundo <span class="highlight">virtual</span> donde puedes <span class="highlight">explorar</span>, <span class="highlight">construir</span>, <span class="highlight">divertirte</span> y <span class="highlight">socializar</span> como nunca antes.</h1>
+        </div>
+        <div class="login-box">
+            <h2>Accede a tu aventura en DrakoHotel</h2>
+            <form>
+                <input type="text" placeholder="Tu nombre de usuario" aria-label="Nombre de usuario" required>
+                <input type="password" placeholder="Tu contraseña" aria-label="Contraseña" required>
+                <button type="submit" class="btn-login-submit">Acceder</button>
+            </form>
+            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+            <button class="btn-create-account" onclick="showModal()">¡Únete gratis y empieza a explorar!</button>
+        </div>
+    </div>
+</section>
+
+
+<!-- Modal -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal-content">
+        <button class="btn-close" onclick="closeModal()">Cerrar</button>
+        <h2>Regístrate en DrakoHotel</h2>
+        <form>
+            <!-- Nombre de Usuario -->
+            <input type="text" name="username" placeholder="Nombre de usuario" aria-label="Nombre de usuario" required>
+            
+            <!-- Correo Electrónico -->
+            <input type="email" name="email" placeholder="Correo electrónico" aria-label="Correo electrónico" required>
+            
+            <!-- Contraseña -->
+            <input type="password" name="password" placeholder="Contraseña" aria-label="Contraseña" required>
+            
+            <!-- Repetir Contraseña -->
+            <input type="password" name="re-password" placeholder="Repetir contraseña" aria-label="Repetir contraseña" required>
+            
+            <!-- Fecha de Nacimiento -->
+            <label for="dob">Fecha de nacimiento:</label>
+            <input type="date" id="dob" name="dob" aria-label="Fecha de nacimiento" required>
+            
+            <!-- Selección de Sexo -->
+            <div class="gender-selection">
+                <label>Sexo:</label>
+                <div>
+                    <input type="radio" id="male" name="gender" value="Hombre" required>
+                    <label for="male">Hombre</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="gender" value="Mujer" required>
+                    <label for="female">Mujer</label>
+                </div>
+            </div>
+            
+            <!-- Aceptar Términos y Condiciones -->
+            <div class="terms">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">Acepto los <a href="#">términos y condiciones</a></label>
+            </div>
+            
+            <!-- Botón de Registro -->
+            <button type="submit" class="btn-register-submit">Registrarse</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+<!-- Marquee Section -->
+    <div class="marquee">
+        <div class="marquee-content">
+            <div class="marquee-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_tlA65R8HWyZvWmjvWTKLHSxEFDSI4OMiMLLvZnqua4T5Z2yBz7C_CZvf6QSWX7Nlff1Db9nW4xePia6v1fAxqjkzyJCu7nQR7PuqDhayTJTKCf3tRQPcvZ8pYulMtMPdbVWJBoVhl1lJ/s1600/YUQeTvI.gif" alt="Juegos automáticos y eventos">
+                <span class="title">¡Eventos Divertidos!</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhBaCWXfWMcGWd2J-zA8v3WVPZn-xcw5CQkLbUFtMepdRNrttenWbHPBs4VXxMOESkttgHLB0oD3ovhVQhAMf5CjA64knp2lWRVaRRSdaiyRsE41xgoXUVRSC_pfBvvjfdUAfm-rkJd__jd/s1600/FR759.gif" alt="Recompensas gratis">
+                <span class="title">¡Furnis Nuevos!</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjsC4eoNOqiDNFM_3boucJD9jiwGee5Jq6aPzm-uxsSEerbaxX6EYhxBjSTPcO_ag-nx1lu-ePXDInPmQNnVT9ae8t2l77P0XgkO32TXEmL2amzpFiWU0JkmDf8UaUnyic7e59KRKZzgdw/s1600/UK680.gif" alt="Economía justa">
+                <span class="title">¡Rares Especiales!</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi44Qk35gPLbZgedbrqEgxQEidjfei8g3dRfzos9VFbJhpJJzZhMozpDOgB8cbz4sQgIvMJvBV8NtAY7-dslv_4OPVLUa4QO36ER-K9LYGz-XQ74PNF2WOPbBy8g78k98u66hAnZCAONFk/s1600/credit_promo_cloud_with_coin.png" alt="Créditos infinitos">
+                <span class="title">¡Economía Estable!</span>
+            </div>
+            <div class="marquee-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiw1rBWzGsmx7rQou1aLdOJvrqxiTWEIPVtT-uwYIotZ87KuExMCsvjf3bDCoX7yeHqIHANJX9cfawWDnHbMxKoZrc4KMvS0MaJanUewWVCpX3oEd4bAa-Rr5hnQwXiR6KsWCf-PSHgjOxN/s0/HTW22.png" alt="Nuevas funciones">
+                <span class="title">¡Funciones únicas!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+<section class="features">
+    <div class="container">
+        <h2>Personaliza tu <span class="highlight">Avatar</span>, explora Salas y conéctate con otros jugadores</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <img src="http://habbo.city/habbo-imaging/avatarimage?figure=hd-190-1005.lg-275-79.sh-305-64.ch-210-64.hr-831-42.he-987462840-100.ea-990000361-100.cp-990000813-62.cc-989999901-1189.ha-1004-110&amp;head_direction=3&amp;gesture=sml" alt="Avatar">
+                <h3>Defínelo a tu manera</h3>
+                <p>Personaliza tu avatar con una variedad de opciones y crea un espacio único para ti. ¡Actualizaciones regulares para que siempre tengas algo nuevo!</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjHRGm9w2j1PES4OH5r1zV41m2YiRqyv2dCrJoipIGPXeW9RuunidmhR7ni_MhDfsRzGgVOHO_adR5VREaRp0UdimXV3La0Na38NqhZzn7HhFMyqpaVtlaa7iU9MEklTBFs0Ryfz2fWImfA/s1600/spromo_Mall_Entrance.png" alt="Spaces">
+                <h3>Descubre, crea y conecta</h3>
+                <p>Explora diversas salas, únete a juegos emocionantes, o diseña tus propios mundos y espacios para interactuar con la comunidad.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiwEpWp_qbE6W8aKhvFMj6AOt-qdyMm4ORlP3nngTLKZd5NBQmNFW3Slo2fMqSBxlVJXvL0hSi8tQFXAoWykpsu3Bpop9Hh3KoXWGVy-6Lti9Pfi813RxM7_04YgPwFCpBOFAG_tbvHOlJk/s1600/spromo_bigshadesrare.png" alt="Free">
+                <h3>¡Completamente Gratis!</h3>
+                <p>En DrakoHotel, disfruta de todas las características y opciones de personalización sin costo alguno.</p>
+            </div>
+            <div class="feature-item">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzCrbgJmWTj_I9xuxuq_LRk9ow-HPvCYjqVq6IabLwbBdFiuHVg83hnBpE-17EkhB_pYGfA_YUl7Eu6rVo8WpwOM4k4oPFwyFaeYacDyKHIFtVudkBJmQBs3J5cznqNVGhC5zk0zv_R54/s1600/spromo_Bonus_Bags.png" alt="Rewards">
+                <h3>¡Obtén Recompensas!</h3>
+                <p>Participa en eventos frecuentes para ganar recompensas exclusivas y objetos únicos creados por nuestra comunidad.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Events and Rewards Section -->
+    <section class="events">
+        <div class="container">
+            <h2><span class="highlight">Eventos</span> y recompensas dinámicas para ti</h2>
+            <div class="reward-grid">
+                <div class="reward-item">
+                    <h3>Estatua de Dragón VIP</h3>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhp4sXk7jpYre79U-q-Qy0cIgoz0yCb3SjEoiNylPAs4CZNKOr3a3hnv0PmQ8syMqOfvTqjGCXPjUuaqgyZXcT92WAmjgl554Rf6t9ZxvHy5cCC_o2TGaZNmXIo7f1ZJRZG1VG9IBvds7o/s1600/senza_10.png" alt="Sofá VIP">
+                    <p>50 puntos</p>
+                </div>
+                <div class="reward-item">
+                    <h3>Sofá Trono HC</h3>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhp4sXk7jpYre79U-q-Qy0cIgoz0yCb3SjEoiNylPAs4CZNKOr3a3hnv0PmQ8syMqOfvTqjGCXPjUuaqgyZXcT92WAmjgl554Rf6t9ZxvHy5cCC_o2TGaZNmXIo7f1ZJRZG1VG9IBvds7o/s1600/senza_10.png" alt="Sofá Trono HC">
+                    <p>50 puntos</p>
+                </div>
+                <div class="reward-item">
+                    <h3>Trono</h3>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhp4sXk7jpYre79U-q-Qy0cIgoz0yCb3SjEoiNylPAs4CZNKOr3a3hnv0PmQ8syMqOfvTqjGCXPjUuaqgyZXcT92WAmjgl554Rf6t9ZxvHy5cCC_o2TGaZNmXIo7f1ZJRZG1VG9IBvds7o/s1600/senza_10.png" alt="Trono">
+                    <p>20 puntos</p>
+                </div>
+                <div class="reward-item">
+                    <h3>Dragón de Fuego Jade</h3>
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhp4sXk7jpYre79U-q-Qy0cIgoz0yCb3SjEoiNylPAs4CZNKOr3a3hnv0PmQ8syMqOfvTqjGCXPjUuaqgyZXcT92WAmjgl554Rf6t9ZxvHy5cCC_o2TGaZNmXIo7f1ZJRZG1VG9IBvds7o/s1600/senza_10.png" alt="Dragón de Fuego Jade">
+                    <p>3 puntos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard">
+        <div class="container">
+            <h2>Tabla clasificatoria semanal</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posición</th>
+                        <th>Nombre</th>
+                        <th>Puntos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Adonis</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Nebula</td>
+                        <td>5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news">
+        <div class="container">
+            <article class="news-item">
+                <h3>¡Bienvenidos!</h3>
+                <p>Publicado hace 1 año</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <p class="footer-text">¿Aún no eres parte de esta grandiosa comunidad? ¿Qué esperas?</p>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="https://discord.gg/GraMB9uJRB" target="_blank" class="social-icon">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="https://www.facebook.com/HotelHabboli" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="footer-discord">
+                <button class="toggle-discord">Mostrar servidor de Discord</button>
+                <div class="discord-widget">
+                    <iframe src="https://discord.com/widget?id=997222418382848120&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+                </div>
+            </div>
+            <p class="copyright">Copyright © DrakoHotel - Proyecto educativo sin fines de lucro. by: Adonis & OffGrid.</p>
+        </div>
+    </div>
+</footer>
+<script src="/src/js/drako.js"></script>
+<script>
+    // Anti-inspect code
+    (function() {
+      function blockInspect() {
+        if (window.devtools.isOpen) {
+          window.location.href = "/blocked";
+        }
+        window.devtools.isOpen = false;
+        window.devtools.orientation = undefined;
+      }
+  
+      const devtools = {
+        isOpen: false,
+        orientation: undefined
+      };
+  
+      const threshold = 160;
+  
+      const emitEvent = (isOpen, orientation) => {
+        window.dispatchEvent(new CustomEvent('devtoolschange', {
+          detail: {
+            isOpen,
+            orientation
+          }
+        }));
+      };
+  
+      setInterval(() => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        const orientation = widthThreshold ? 'vertical' : 'horizontal';
+  
+        if (
+          !(heightThreshold && widthThreshold) &&
+          ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+        ) {
+          if (!devtools.isOpen || devtools.orientation !== orientation) {
+            emitEvent(true, orientation);
+          }
+          devtools.isOpen = true;
+          devtools.orientation = orientation;
+        } else {
+          if (devtools.isOpen) {
+            emitEvent(false, undefined);
+          }
+          devtools.isOpen = false;
+          devtools.orientation = undefined;
+        }
+      }, 500);
+  
+      window.addEventListener('devtoolschange', blockInspect);
+  
+      // Disable right-click
+      document.addEventListener('contextmenu', (e) => e.preventDefault());
+  
+      // Disable F12 key
+      document.onkeydown = function(e) {
+        if(e.keyCode == 123) {
+          return false;
+        }
+        // Disable Ctrl+Shift+I
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+          return false;
+        }
+        // Disable Ctrl+Shift+J
+        if(e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+          return false;
+        }
+        // Disable Ctrl+U
+        if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+          return false;
+        }
+      }
+  
+    })();</script>
+

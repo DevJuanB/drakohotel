@@ -1,0 +1,407 @@
+<html><head><base href="https://websim.example.com/futuristic-game-selection-v2/">
+<title>Ultra-Futuristic Game Mode Selection</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;700&display=swap');
+
+  :root {
+    --elegant-blue: #3a7bd5;
+    --elegant-purple: #8e44ad;
+    --elegant-pink: #e74c3c;
+    --elegant-green: #27ae60;
+    --dark-bg: #1a1a2e;
+    --light-text: #f0f0f0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #enter-btn {
+    position: absolute;
+    padding: 20px 40px;
+    font-size: 28px;
+    font-family: 'Rajdhani', sans-serif;
+    background: linear-gradient(45deg, var(--elegant-blue), var(--elegant-purple));
+    border: none;
+    color: var(--light-text);
+    font-weight: 500;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    overflow: hidden;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.7);
+    }
+    70% {
+      box-shadow: 0 0 0 20px rgba(74, 144, 226, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(74, 144, 226, 0);
+    }
+  }
+
+  #enter-btn:hover {
+    box-shadow: 0 0 20px var(--elegant-blue), 0 0 40px var(--elegant-blue), 0 0 60px var(--elegant-blue);
+    text-shadow: 0 0 10px var(--elegant-blue);
+  }
+
+  .mode-card {
+    width: 90%;
+    max-width: 1200px;
+    height: auto;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease-out;
+  }
+
+  .mode-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mode-options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 30px;
+  }
+
+  .mode-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.4s ease;
+    pointer-events: none;
+  }
+
+  .mode-option:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .preview-image {
+    height: 250px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    width: 100%;
+  }
+
+  .mode-option:hover .preview-image {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  #classic-preview {
+    background-image: url('https://i.imgur.com/HIVWskN.png');
+  }
+
+  #normal-preview {
+    background-image: url('https://i.imgur.com/U9K3ZOs.png');
+  }
+
+  #modern-preview {
+    background-image: url('https://i.imgur.com/H06XDog.png');
+  }
+
+  .mode-option[data-mode="modern"] {
+    position: relative;
+    border: 2px solid var(--elegant-green);
+    box-shadow: 0 0 15px var(--elegant-green);
+  }
+
+  .recommended-label {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: linear-gradient(45deg, var(--elegant-green), var(--elegant-blue));
+    color: var(--light-text);
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(46, 204, 113, 0.3);
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .mode-label {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 15px 0 10px;
+    background: linear-gradient(45deg, var(--elegant-blue), var(--elegant-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .mode-description {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    opacity: 0.9;
+  }
+
+  .hexagon-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+  }
+
+  .particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+  }
+
+  .particle {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    width: 5px;
+    height: 5px;
+    background-color: var(--elegant-blue);
+    box-shadow: 0 0 10px 2px var(--elegant-purple);
+    border-radius: 50%;
+    animation: rise 15s infinite ease-in;
+  }
+
+  @keyframes rise {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(1);
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-1000px) scale(0.5);
+    }
+  }
+
+  .loading-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 26, 46, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
+  .loading-container.visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .loading-circle {
+    width: 100px;
+    height: 100px;
+    border: 3px solid var(--elegant-blue);
+    border-top: 3px solid var(--elegant-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite, glow 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 20px var(--elegant-blue);
+  }
+
+  .loading-text {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--light-text);
+    text-align: center;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px var(--elegant-blue); }
+    100% { box-shadow: 0 0 20px var(--elegant-blue), 0 0 40px var(--elegant-purple); }
+  }
+
+  .mode-card.visible .mode-option {
+    pointer-events: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <button id="enter-btn">Enter</button>
+    
+    <div class="mode-card" id="mode-selection">
+      <h2>Select Game Mode</h2>
+      <div class="mode-options-container">
+        <div class="mode-option" data-mode="classic">
+          <div class="preview-image" id="classic-preview" style="background-image: url('https://i.imgur.com/HIVWskN.png');"></div>
+          <div class="mode-label">Classic</div>
+          <div class="mode-description">Experience the nostalgia of retro gaming</div>
+        </div>
+        <div class="mode-option" data-mode="normal">
+          <div class="preview-image" id="normal-preview" style="background-image: url('https://i.imgur.com/U9K3ZOs.png');"></div>
+          <div class="mode-label">Normal</div>
+          <div class="mode-description">Balanced gameplay for all skill levels</div>
+        </div>
+        <div class="mode-option" data-mode="modern">
+          <div class="preview-image" id="modern-preview" style="background-image: url('https://i.imgur.com/H06XDog.png');"></div>
+          <div class="mode-label">Modern</div>
+          <div class="mode-description">Cutting-edge features and graphics</div>
+          <div class="recommended-label">Recommended</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="loading-container">
+      <div class="loading-circle"></div>
+      <div class="loading-text">Initiating <span id="selected-mode"></span> mode simulation...</div>
+    </div>
+
+    <svg class="hexagon-bg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      <defs>
+        <pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse" patternTransform="scale(2) rotate(0)">
+          <path d="M24.8,22 L37.3,29.2 37.3,43.7 24.8,50.9 12.3,43.7 12.3,29.2z M12.3,43.7 L24.8,22 37.3,29.2z M24.8,-7 L37.3,0.2 37.3,14.7 24.8,21.9 12.3,14.7 12.3,0.2z M12.3,14.7 L24.8,-7 37.3,0.2z M0,43.7 L12.5,50.9 12.5,65.4 0,72.6 -12.5,65.4 -12.5,50.9z M-12.5,65.4 L0,43.7 12.5,50.9z" fill="none" stroke="url(#hexagon-gradient)" stroke-width="1">
+            <animate attributeName="stroke-dasharray" from="0,1000" to="1000,0" dur="30s" repeatCount="indefinite" />
+          </path>
+        </pattern>
+        <linearGradient id="hexagon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="var(--elegant-blue)" />
+          <stop offset="50%" stop-color="var(--elegant-purple)" />
+          <stop offset="100%" stop-color="var(--elegant-pink)" />
+          <animate attributeName="x1" from="0%" to="100%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="y1" from="0%" to="100%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="x2" from="100%" to="0%" dur="10s" repeatCount="indefinite" />
+          <animate attributeName="y2" from="100%" to="0%" dur="10s" repeatCount="indefinite" />
+        </linearGradient>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#hexagons)" />
+    </svg>
+
+    <div class="particles"></div>
+  </div>
+
+  <script>
+    const enterBtn = document.getElementById('enter-btn');
+    const modeCard = document.getElementById('mode-selection');
+    const modeOptions = document.querySelectorAll('.mode-option');
+    const container = document.querySelector('.container');
+    const particles = document.querySelector('.particles');
+
+    // Create particles
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('span');
+      particle.classList.add('particle');
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      particles.appendChild(particle);
+    }
+
+    enterBtn.addEventListener('click', () => {
+      enterBtn.style.transform = 'scale(0)';
+      enterBtn.style.opacity = '0';
+      setTimeout(() => {
+        enterBtn.style.display = 'none';
+        modeCard.classList.add('visible');
+        
+        // Move the event listeners setup here
+        modeOptions.forEach(option => {
+          option.addEventListener('click', () => {
+            const selectedMode = option.getAttribute('data-mode');
+            console.log(`Selected mode: ${selectedMode}`);
+            
+            option.style.transform = 'scale(1.05)';
+            option.style.boxShadow = `0 0 20px var(--elegant-${selectedMode === 'modern' ? 'green' : 'blue'})`;
+            
+            setTimeout(() => {
+              modeCard.style.opacity = '0';
+              modeCard.style.transform = 'scale(0.9)';
+              
+              const loadingContainer = document.querySelector('.loading-container');
+              const selectedModeSpan = document.getElementById('selected-mode');
+              selectedModeSpan.textContent = selectedMode;
+              loadingContainer.classList.add('visible');
+              
+              setTimeout(() => {
+                loadingContainer.classList.remove('visible');
+                alert(`${selectedMode} mode loaded!`);
+              }, 3000);
+            }, 500);
+          });
+        });
+      }, 300);
+    });
+
+    // Enhanced parallax effect
+    container.addEventListener('mousemove', (e) => {
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      modeCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateZ(50px)`;
+    });
+
+    // Reset parallax on mouse leave
+    container.addEventListener('mouseleave', () => {
+      modeCard.style.transform = 'rotateY(0) rotateX(0) translateZ(0)';
+    });
+
+    // Futuristic background animation
+    const hexagonBg = document.querySelector('.hexagon-bg');
+    let hue = 0;
+    
+    function animateBackground() {
+      hue = (hue + 1) % 360;
+      hexagonBg.style.filter = `hue-rotate(${hue}deg)`;
+      requestAnimationFrame(animateBackground);
+    }
+    
+    animateBackground();
+  </script>
+</body>
+</html>
